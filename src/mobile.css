@@ -1,0 +1,83 @@
+/* Blockbench Mobile Community: conservative touch adaptations */
+html.blockbench-mobile-native,
+html.blockbench-mobile-native body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.blockbench-mobile-native body {
+  padding-top: env(safe-area-inset-top);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+}
+
+html.blockbench-mobile-native #web_download_button,
+html.blockbench-mobile-native #windows_window_menu,
+html.blockbench-mobile-native #mac_window_menu {
+  display: none !important;
+}
+
+@media (pointer: coarse) {
+  button,
+  input,
+  select,
+  textarea,
+  .tool,
+  .menu_entry,
+  .contextMenu li,
+  .project_tab,
+  #mode_selector li,
+  .toolbar_wrapper > * {
+    min-height: 38px;
+  }
+
+  button,
+  .tool,
+  .menu_entry,
+  .contextMenu li,
+  #mode_selector li {
+    touch-action: manipulation;
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  .contextMenu,
+  .dialog {
+    max-width: calc(100vw - 16px) !important;
+    max-height: calc(100vh - 16px) !important;
+  }
+
+  #menu_bar {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #menu_bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  #tab_bar_list {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 800px) {
+  #left_bar,
+  #right_bar {
+    max-width: 82vw;
+  }
+
+  #corner_logo img {
+    max-width: 112px;
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "blockbench-mobile-community",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Unofficial Android wrapper and mobile adaptation pipeline for Blockbench",
+  "license": "GPL-3.0-or-later",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "upstream:fetch": "bash scripts/fetch-upstream.sh",
+    "upstream:install": "bash scripts/install-upstream.sh",
+    "upstream:build": "bash scripts/build-upstream.sh",
+    "web:prepare": "node scripts/prepare-web.mjs",
+    "android:ensure": "bash scripts/ensure-android.sh",
+    "android:patch": "node scripts/patch-android.mjs",
+    "android:sync": "npx cap sync android && npm run android:patch",
+    "build:debug": "bash scripts/build-debug.sh",
+    "validate": "node scripts/validate-project.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.0.0",
+    "@capacitor/app": "8.0.0",
+    "@capacitor/core": "8.0.0",
+    "@capacitor/filesystem": "8.0.0",
+    "@capacitor/share": "8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.0.0",
+    "esbuild": "0.25.0"
+  }
+}

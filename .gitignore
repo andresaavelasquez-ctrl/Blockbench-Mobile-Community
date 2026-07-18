@@ -1,0 +1,10 @@
+node_modules/
+upstream/
+www/
+android/
+dist/
+*.jks
+*.keystore
+local.properties
+.env
+.DS_Store

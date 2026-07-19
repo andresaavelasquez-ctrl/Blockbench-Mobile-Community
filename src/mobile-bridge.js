@@ -10,7 +10,7 @@ let exportInProgress = false;
 
 window.__BLOCKBENCH_MOBILE__ = {
   native: isNative,
-  version: '0.2.0',
+  version: '0.2.2',
   immersive: true,
   persistentExternalPlugins: true,
 };

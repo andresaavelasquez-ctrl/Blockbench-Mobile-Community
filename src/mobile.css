@@ -16,23 +16,28 @@ html.blockbench-mobile-native body {
   background: var(--color-dark, #121418);
 }
 
-html.blockbench-mobile-native #page_wrapper {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  height: 100dvh !important;
-  max-width: none !important;
-  max-height: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+/*
+ * Mantener la geometría original de Blockbench:
+ * header ocupa --menu-bar-height y #page_wrapper usa el espacio restante.
+ * No fijar #page_wrapper sobre toda la ventana porque cubriría el encabezado.
+ */
+html.blockbench-mobile-native header {
+  position: relative;
+  z-index: 40;
+  width: 100%;
+  flex: 0 0 var(--menu-bar-height);
 }
 
-html.blockbench-mobile-native #work_screen {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
+html.blockbench-mobile-native #page_wrapper {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: calc(100% - var(--menu-bar-height));
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
 }
 
 html.blockbench-mobile-native #web_download_button,

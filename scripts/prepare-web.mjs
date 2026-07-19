@@ -58,6 +58,10 @@ let html = fs.readFileSync(indexPath, 'utf8');
 html = html.replace('<html lang="en">', '<html lang="es">');
 html = html.replace('<title>Blockbench</title>', '<title>Blockbench Mobile Community</title>');
 html = html.replace(
+  /<meta\s+name="viewport"[^>]*>/i,
+  '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">',
+);
+html = html.replace(
   '<link rel="stylesheet" href="css/setup.css" id="setup_stylesheet">',
   '<link rel="stylesheet" href="css/setup.css" id="setup_stylesheet">\n\t<link rel="stylesheet" href="mobile/mobile.css">',
 );
@@ -71,7 +75,10 @@ fs.writeFileSync(indexPath, html);
 const metadata = {
   generatedAt: new Date().toISOString(),
   upstreamVersion: JSON.parse(fs.readFileSync(path.join(upstream, 'package.json'), 'utf8')).version,
+  mobileVersion: '0.2.0',
+  immersive: true,
+  persistentExternalPlugins: true,
 };
 fs.writeFileSync(path.join(www, 'mobile-build.json'), JSON.stringify(metadata, null, 2));
 
-console.log(`Web app preparada en ${www} usando Blockbench ${metadata.upstreamVersion}`);
+console.log(`Web app inmersiva preparada en ${www} usando Blockbench ${metadata.upstreamVersion}`);
